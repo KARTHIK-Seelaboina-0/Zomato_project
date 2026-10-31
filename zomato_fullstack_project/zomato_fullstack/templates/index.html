@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite | Food Delivery</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">q</span> quickbite<span class="brand-dot">.</span></a>
+  <nav class="nav">
+    <button class="nav-link active" data-view="customer">Explore</button>
+    <button class="nav-link" data-view="admin">Admin</button>
+    <button class="nav-link" data-view="restaurant">Restaurant</button>
+    <button class="nav-link" data-view="delivery">Delivery</button>
+    <button id="cartButton" class="cart-button">🛒 Cart <span id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pulse"></span> GOOD FOOD. GREAT MOOD.</span>
+      <h1>Your next favorite meal is <em>one click</em> away.</h1>
+      <p>Discover local favorites, order what you love, and let the good stuff come to you.</p>
+      <div class="search-box">
+        <span>⌕</span><input id="searchInput" placeholder="Search restaurants or cuisines..." aria-label="Search restaurants">
+        <button id="searchButton" class="primary">Search ↗</button>
+      </div>
+      <div class="hero-stats">
+        <div><strong>7+</strong><span>local favorites</span></div>
+        <div><strong>10%</strong><span>off orders ₹500+</span></div>
+        <div><strong>100%</strong><span>demo deliciousness</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-chip chip-top">⭐ 4.8 <small>Foodie favorite</small></div>
+      <div class="food-orbit"><div class="orbit-ring"></div><span class="hero-food">🍜</span></div>
+      <div class="floating-chip chip-bottom">⚡ Fast & fresh <small>Made with love</small></div>
+      <span class="spark spark-a">✦</span><span class="spark spark-b">✧</span>
+    </div>
+  </section>
+
+  <section id="customerView" class="section">
+    <div class="section-heading"><div><p class="kicker">THE GOOD STUFF</p><h2>Explore restaurants</h2><p class="muted">A little something for every craving.</p></div><span id="restaurantCount" class="muted"></span></div>
+    <div id="filters" class="filters">
+      <button class="filter active" data-cuisine="All">All cuisines</button>
+      <button class="filter" data-cuisine="Indian">🇮🇳 Indian</button>
+      <button class="filter" data-cuisine="Italian">🍕 Italian</button>
+      <button class="filter" data-cuisine="American">🍔 American</button>
+      <button class="filter" data-cuisine="Chinese">🥡 Chinese</button>
+      <button class="filter" data-cuisine="South Indian">🥞 South Indian</button>
+      <button class="filter" data-cuisine="Desserts">🍰 Desserts</button>
+    </div>
+    <div id="restaurantGrid" class="restaurant-grid"><div class="loading">Preparing the menu…</div></div>
+  </section>
+
+  <section id="dashboardView" class="section hidden">
+    <div class="section-heading"><div><p class="kicker" id="dashboardKicker">YOUR WORKSPACE</p><h2 id="dashboardTitle">Dashboard</h2><p id="dashboardSubtitle" class="muted"></p></div><button id="refreshButton" class="secondary">↻ Refresh</button></div>
+    <div id="dashboardContent"></div>
+  </section>
+</main>
+
+<footer><span>© 2026 QuickBite · Student food delivery project</span><span>Built with Flask + SQLite ✨</span></footer>
+<div id="toast" class="toast"></div>
+<div id="modalBackdrop" class="modal-backdrop">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><h3 id="modalTitle">Menu</h3><button id="closeModal" class="close" aria-label="Close">×</button></div>
+    <div id="modalContent" class="modal-content"></div>
+    <div id="modalFoot" class="modal-foot"></div>
+  </section>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
